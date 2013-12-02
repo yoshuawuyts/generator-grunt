@@ -1,0 +1,21 @@
+{
+  "globals": {
+    "module": true,
+    "define": true,
+    "angular": true
+  },
+  "browser": true,
+  "bitwise": true,
+  "curly": true,
+  "eqeqeq": true,
+  "globalstrict": true,
+  "immed": true,
+  "indent": 2,
+  "latedef": true,
+  "newcap": true,
+  "node": true,
+  "noempty": true,
+  "nonew": true,
+  "trailing": true,
+  "undef": true
+}
