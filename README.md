@@ -1,10 +1,10 @@
-# generator-piglet
+# generator-grunt
 
-Yeoman generator for [piglet](github.com/yoshuawuyts/piglet)
+Yeoman generator for [grunt](gruntjs.com)
 
 ## Installation
 ````
-npm install generator-piglet
+npm install generator-grunt
 ````
 
 ## License
