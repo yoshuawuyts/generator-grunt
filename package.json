@@ -1,12 +1,15 @@
 {
-  "name": "generator-piglet",
-  "version": "0.0.0",
-  "description": "A generator for Yeoman",
+  "name": "generator-grunt",
+  "version": "0.1.0",
+  "description": "A gruntfile generator for Yeoman",
   "keywords": [
-    "yeoman-generator"
+    "yeoman-generator",
+    "Grunt",
+    "Gruntfile",
+    "Configuration"
   ],
-  "homepage": "https://github.com/yoshuawuyts/generator-piglet",
-  "bugs": "https://github.com/yoshuawuyts/generator-piglet/issues",
+  "homepage": "https://github.com/yoshuawuyts/generator-grunt",
+  "bugs": "https://github.com/yoshuawuyts/generator-grunt/issues",
   "author": {
     "name": "Yoshua Wuyts",
     "email": "i@yoshuawuyts.com",
@@ -15,7 +18,7 @@
   "main": "app/index.js",
   "repository": {
     "type": "git",
-    "url": "git://github.com/yoshuawuyts/generator-piglet.git"
+    "url": "git://github.com/yoshuawuyts/generator-grunt.git"
   },
   "scripts": {
     "test": "mocha"
