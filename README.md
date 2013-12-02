@@ -4,7 +4,7 @@ Yeoman generator for [grunt](gruntjs.com)
 
 ## Installation
 ````
-npm install generator-grunt -g
+npm install -g generator-grunt
 ````
 
 ## License
