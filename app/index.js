@@ -23,14 +23,22 @@ PigletGenerator.prototype.askFor = function askFor() {
   console.log(this.yeoman);
 
   var prompts = [{
-    type: 'confirm',
-    name: 'confirmInstall',
-    message: 'Would you like to install grunt and all its dependencies?',
-    default: true
+    type: 'list',
+    name: 'projectType',
+    message: 'What type of configuration do you want?',
+    choices: [{
+      value: 'expressType',
+      name: 'Express - step-by-step config',
+      default: true,
+    }, {
+      value: 'liteType',
+      name: 'Vanilla - no plugins installed',
+    }]
   }];
 
   this.prompt(prompts, function (props) {
-    this.someOption = props.someOption;
+    this.projectType = props.projectType;
+    this.projectName = props.projectName;
 
     cb();
   }.bind(this));
