@@ -19,7 +19,7 @@ Generator-grunt assumes the following directory structure:
 │   ├── styles
 │   └── views
 ├── build
-├── config                // config
+├── config                // server config
 ├── grunt
 └── tests     
 ````
