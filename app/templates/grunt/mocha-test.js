@@ -7,6 +7,6 @@ module.exports = {
       require: 'chai'.assert
     },
 
-    src: 'test/api/**/*.js'
+    src: '<%= vars.testsPath %>',
   }
 };

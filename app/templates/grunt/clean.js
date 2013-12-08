@@ -5,8 +5,8 @@ module.exports = {
     files: [{
       dot: true,
       src: [
-        '.build',
-        '.tmp'
+        '<%= vars.buildPath %>',
+        '<%= vars.tmpPath %>'
       ],
     }, ],
   },
@@ -15,7 +15,7 @@ module.exports = {
     files: [{
       dot: true,
       src: [
-        '.tmp'
+        '<%= vars.tmpPath %>'
       ],
     }, ],
   },

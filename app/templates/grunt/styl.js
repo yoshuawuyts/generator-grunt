@@ -6,7 +6,7 @@ module.exports = {
       whitespace: true,
       compress: false
     },
-    src: 'assets/styles/index.styl',
-    dest: '.tmp/style.css'
+    src: '<%= vars.stylesPath %>',
+    dest: '<%= vars.tmpPath %>/style.css'
   }
 };

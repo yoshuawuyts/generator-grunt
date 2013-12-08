@@ -5,8 +5,7 @@ module.exports = {
     files: [{
       dot: true,
       src: [
-        '.jshintrc',
-        'package.json'
+        '<%= vars.jsonPath %>',
       ],
     }, ],
   },

@@ -3,35 +3,35 @@
 module.exports = {
   all: {
     src: [
-      'api{/, /**/, /**/**}*.js',
-      'assets/js{/, /**/, /**/**/}*.js',
-      '*.js', 'grunt/*.js', 'config/*.js',
-      'tests{/, /**/, /**/**}*.js'
+      '<%= vars.apiPath %>',
+      '<%= vars.configPath %>',
+      '<%= vars.jsAssetsPath %>',
+      '<%= vars.testsPath %>',
     ],
     options: {
       config: '.jsbeautifyrc'
     }
   },
   api: {
-    src: ['api{/, /**/, /**/**}*.js'],
+    src: ['<%= vars.apiPath %>', ],
     options: {
       config: '.jsbeautifyrc'
     }
   },
   assets: {
-    src: ['assets/js{/, /**/, /**/**/}*.js'],
+    src: ['<%= vars.jsAssetsPath %>'],
     options: {
       config: '.jsbeautifyrc'
     }
   },
   config: {
-    src: ['*.js', 'grunt/*.js', 'config/*.js'],
+    src: ['<%= vars.configPath %>'],
     options: {
       config: '.jsbeautifyrc'
     }
   },
   tests: {
-    src: ['tests{/, /**/, /**/**}*.js'],
+    src: ['<%= vars.testsPath %>'],
     options: {
       config: '.jsbeautifyrc'
     }

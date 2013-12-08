@@ -3,6 +3,20 @@
 module.exports = function (grunt) {
 
   grunt.initConfig({
+
+    // configurable paths
+    vars: {
+      apiPath: 'api{/, /**/, /**/**}*.js',
+      configPath: ['Gruntfile.js', 'grunt/**/*.js', 'config/*.js'],
+      stylesPath: 'assets/styles{/, /**/, /**/**/}*.styl',
+      jsAssetsPath: 'assets/js{/, /**/, /**/**/}*.js',
+      jsonPath: ['./*.json', '.jshintrc', '.jsbeautifyrc', 'tests/**/*.json'],
+      testsPath: 'tests{/, /**/, /**/**}*.js',
+      viewsPath: 'assets/views{/, /**/, /**/**/}*.jade',
+      tmpPath: '.tmp',
+      buildPath: 'build'
+    },
+
     <%= viewSlug %>
     autoprefixer: require('./grunt/autoprefixer'),
     csslint: require('./grunt/csslint'),

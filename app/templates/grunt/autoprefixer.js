@@ -5,7 +5,7 @@ module.exports = {
     browsers: ['last 1 version', '> 1%']
   },
   prefix: {
-    src: '.tmp/style.css',
-    dest: '.tmp/style.prefix.css'
+    src: '<%= vars.tmpPath %>/style.css',
+    dest: '<%= vars.tmpPath %>/style.prefix.css'
   }
 };

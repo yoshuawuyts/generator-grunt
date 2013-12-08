@@ -5,15 +5,15 @@ module.exports = {
     options: {
       restucture: true,
     },
-    src: '.tmp/style.prefix.css',
-    dest: 'build/style.min.css'
+    src: '<%= vars.tmpPath %>/style.prefix.css',
+    dest: '<%= vars.buildPath %>/style.min.css'
   },
   report: {
     options: {
       restucture: true,
       report: 'gzip'
     },
-    src: '.tmp/style.prefix.css',
-    dest: 'build/style.min.css'
+    src: '<%= vars.tmpPath %>/style.prefix.css',
+    dest: '<%= vars.buildPath %>style.min.css'
   }
 };

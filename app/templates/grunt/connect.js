@@ -13,7 +13,7 @@ module.exports = {
       open: true,
       // Define from which folder assets should be served
       base: [
-        'build/'
+        '<%= vars.buildPath %>'
       ]
     }
   },

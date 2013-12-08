@@ -8,34 +8,34 @@ module.exports = {
 
   all: {
     src: [
-      'api{/, /**/, /**/**}*.js',
-      'assets/js{/, /**/, /**/**/}*.js',
-      '*.js', 'grunt/*.js', 'config/*.js',
-      'tests{/, /**/, /**/**}*.js'
+      '<%= vars.apiPath %>',
+      '<%= vars.configPath %>',
+      '<%= vars.jsAssetsPath %>',
+      '<%= vars.testsPath %>',
     ]
   },
 
   api: {
     src: [
-      'api{/, /**/, /**/**}*.js',
+      '<%= vars.apiPath %>', ,
     ]
   },
 
   assets: {
     src: [
-      'assets/js{/, /**/, /**/**/}*.js',
+      '<%= vars.jsAssetsPath %>',
     ]
   },
 
   config: {
     src: [
-      '*.js', 'grunt/*.js', 'config/*.js',
+      '<%= vars.configPath %>',
     ]
   },
 
   test: {
     src: [
-      'tests{/, /**/, /**/**}*.js'
+      '<%= vars.testsPath %>',
     ]
   }
 };

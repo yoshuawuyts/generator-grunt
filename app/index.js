@@ -161,10 +161,8 @@ GruntGenerator.prototype.generalFiles = function generalFiles() {
   this.copy('grunt/jshint.js', 'grunt/jshint.js');
   this.copy('grunt/jsonlint.js', 'grunt/jsonlint.js');
   this.copy('grunt/karma.js', 'grunt/karma.js');
-  this.copy('grunt/merge-conflict.js', 'grunt/merge-conflict.js');
   this.copy('grunt/mocha-test.js', 'grunt/mocha-test.js');
   this.copy('grunt/protractor.js', 'grunt/protractor.js');
-  this.copy('grunt/release.js', 'grunt/release.js');
   this.copy('grunt/uglify.js', 'grunt/uglify.js');
   this.copy('grunt/watch.js', 'grunt/watch.js');
 

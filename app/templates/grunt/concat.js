@@ -5,7 +5,7 @@ module.exports = {
     stripBanners: true,
   },
   concat: {
-    src: ['.tmp/*.js'],
-    dest: '.tmp/concat.js',
+    src: ['<%= vars.tmpPath %>/*.js'],
+    dest: '<%= vars.tmpPath %>/concat.js',
   },
 };

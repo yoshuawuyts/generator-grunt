@@ -5,6 +5,6 @@ module.exports = {
   },
 
   lint: {
-    src: ['build/styles.css']
+    src: ['<%= vars.buildPath %>/styles.css']
   },
 };

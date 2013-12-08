@@ -10,7 +10,7 @@ module.exports = {
     },
   },
   compile: {
-    src: '.tmp/concat.js',
-    dest: 'build/app.min.js',
+    src: '<%= vars.tmpPath %>/concat.js',
+    dest: '<%= vars.buildPath %>/app.min.js',
   },
 };

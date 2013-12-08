@@ -4,9 +4,8 @@ module.exports = {
   compile: {
     files: [{
       expand: true,
-      cwd: 'assets/views/',
-      src: ['{**/, **/**/}*.jade', '*.jade'],
-      dest: 'build/views/',
+      src: ['<%= vars.viewsPath %>'],
+      dest: '<%= vars.buildPath %>/views/',
       ext: '.html',
     }]
   }
