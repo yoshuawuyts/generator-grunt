@@ -143,7 +143,7 @@ GruntGenerator.prototype.backFiles = function backFiles() {
     this.copy('grunt/node-inspector.js', 'grunt/node-inspector.js');
     this.copy('grunt/nodemon.js', 'grunt/nodemon.js');
     this.backSlug = "'node-inspector': require('./grunt/node-inspector'),\n    nodemon: require('./grunt/nodemon'),";
-    this.concurrentDev = "dev: {\n    tasks: ['nodemon', 'node-inspector', 'watch']\n  },";
+    this.concurrentDev = "dev: {\n    tasks: ['watch', 'open', 'nodemon', 'node-inspector']\n  },";
   };
   if (this.backType == 'static'){
     this.copy('grunt/connect.js', 'grunt/connect.js');

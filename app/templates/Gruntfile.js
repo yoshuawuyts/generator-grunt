@@ -33,6 +33,7 @@ module.exports = function (grunt) {
     jsbeautifier: require('./grunt/jsbeautifier'),
     jshint: require('./grunt/jshint'),
     jsonlint: require('./grunt/jsonlint'),
+    open: require('./grunt/open'),
     uglify: require('./grunt/uglify'),
     release: require('./grunt/release'),
     watch: require('./grunt/watch'),
