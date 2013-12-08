@@ -5,9 +5,7 @@ module.exports = {
     logConcurrentOutput: true
   },
 
-  dev: {
-    tasks: ['nodemon', 'node-inspector', 'watch'],
-  },
+  <%= concurrentDev %>
 
   build: {
     tasks: ['styles', 'views', 'js'],

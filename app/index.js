@@ -6,42 +6,53 @@ var path = require('path');
 var yeoman = require('yeoman-generator');
 
 // initialize generator
-var PigletGenerator = module.exports = function PigletGenerator(args, options, config) {
+var GruntGenerator = module.exports = function GruntGenerator(args, options, config) {
   yeoman.generators.Base.apply(this, arguments);
 
-  // run npm after installation is done
+  // run npm & bower after prompts are done
   this.on('end', function () {
     this.installDependencies({ skipInstall: options['skip-install'] });
   });
 
-  // parse package.json
+  // read package.json
   this.pkg = JSON.parse(this.readFileAsString(path.join(__dirname, '../package.json')));
 };
 
 // extend base prototype
-util.inherits(PigletGenerator, yeoman.generators.Base);
+util.inherits(GruntGenerator, yeoman.generators.Base);
 
-PigletGenerator.prototype.askFor = function askFor() {
+// initialize prompts
+GruntGenerator.prototype.askFor = function askFor() {
   var cb = this.async();
 
   // have Yeoman greet the user.
   console.log(this.yeoman);
+  console.log('Let\'s start building your Gruntfile!\n')
+
+  // modulename prompt
+  var prompts = [{
+    name: 'moduleName',
+    message: 'What do you want to name this module?'
+  },
+
+  // authorname prompt
+  {
+    name: 'authorName',
+    message: 'What is your name?'
+  },
 
   // views prompt
-  var prompts = [{
+  {
     type: 'list',
     name: 'viewType',
-    message: 'What view engine will you use?',
+    message: 'Choose your HTML engine:',
     choices: [{
       value: 'html',
-      name: 'HTML',
+      name: 'HTML (Available soon)',
       default: true,
     }, {
       value: 'jade',
       name: 'Jade',
-    }, {
-      value: 'none',
-      name: 'None'
     }]
   },
 
@@ -49,23 +60,20 @@ PigletGenerator.prototype.askFor = function askFor() {
   {
     type: 'list',
     name: 'styleType',
-    message: 'What styles engine will you use?',
+    message: 'Choose your CSS preprocessor:',
     choices: [{
       value: 'css',
-      name: 'CSS',
+      name: 'CSS (Available soon)',
       default: true,
     }, {
       value: 'rework',
       name: 'Rework',
     }, {
       value: 'scss',
-      name: 'SCSS'
+      name: 'SCSS (Available soon)'
     }, {
       value: 'stylus',
-      name: 'Stylus'
-    }, {
-      value: 'none',
-      name: 'None'
+      name: 'Stylus (Available soon)'
     }]
   },
 
@@ -73,95 +81,113 @@ PigletGenerator.prototype.askFor = function askFor() {
   {
     type: 'list',
     name: 'backType',
-    message: 'What backend will you use?',
+    message: 'Choose your backend:',
     choices: [{
-      value: 'express',
-      name: 'Express',
+      value: 'node',
+      name: 'Node.js',
       default: true,
     }, {
-      value: 'none',
-      name: 'None'
+      value: 'static',
+      name: 'A static file server with autoreload',
     }]
   }];
 
   // bind responses to object
   this.prompt(prompts, function (props) {
+    this.moduleName = props.moduleName;
+    this.authorName = props.authorName;
     this.viewType = props.viewType;
     this.styleType = props.styleType;
+    this.backType = props.backType;
     cb();
+  // leak 'this' to global scope
   }.bind(this));
 };
 
 
-// copy over the project files
-PigletGenerator.prototype.projectFiles = function projectFiles() {
-  this.copy('.csslintrc', '.csslintrc');
-  this.copy('.gitignore', '.gitignore');
-  this.copy('.jsbeautifyrc', '.jsbeautifyrc');
-  this.copy('.jshintrc', '.jshintrc');
-  this.mkdir('app');
-  this.mkdir('tests');
-  this.copy('package.json', 'package.json');
-  this.copy('Gruntfile.js', 'Gruntfile.js');
-};
-
 // copy views
-PigletGenerator.prototype.viewFiles = function viewFiles() {
+GruntGenerator.prototype.viewFiles = function viewFiles() {
   if (this.viewType == 'html') {
-    /* xxx */
+    this.viewTask = "'copy:views',";
   };
   if (this.viewType == 'jade') {
     this.copy('grunt/jade.js', 'grunt/jade.js');
+    this.viewSlug = "jade: require('./grunt/jade'),";
+    this.viewTask = "'jade',";
   };
 };
 
 // copy styles
-PigletGenerator.prototype.styleFiles = function styleFiles() {
+GruntGenerator.prototype.styleFiles = function styleFiles() {
   if (this.styleType == 'css') {
-    /* xxx */
+    this.styleTask = "'copy:css',";
   };
   if (this.styleType == 'rework') {
-    /* xxx */
+    this.copy('grunt/styl.js', 'grunt/styl.js');
+    this.styleSlug = "styl: require('./grunt/styl'),";
+    this.styleTask = "'styl',";
   };
   if (this.styleType == 'scss') {
-    /* xxx */
+    this.styleSlug = "styl: require('./grunt/sass'),";
+    this.styleTask = "'sass',";
   };
   if (this.styleType == 'stylus') {
-    /* xxx */
+    this.styleSlug = "styl: require('./grunt/stylus'),";
+    this.styleTask = "'stylus',";
   };
 };
 
 // copy backend
-PigletGenerator.prototype.backFiles = function backFiles() {
-  if (this.backType == 'express') {
-    /* xxx */
+GruntGenerator.prototype.backFiles = function backFiles() {
+  if (this.backType == 'node') {
+    this.copy('grunt/node-inspector.js', 'grunt/node-inspector.js');
+    this.copy('grunt/nodemon.js', 'grunt/nodemon.js');
+    this.backSlug = "'node-inspector': require('./grunt/node-inspector'),\n    nodemon: require('./grunt/nodemon'),";
+    this.concurrentDev = "dev: {\n    tasks: ['nodemon', 'node-inspector', 'watch']\n  },";
+  };
+  if (this.backType == 'static'){
+    this.copy('grunt/connect.js', 'grunt/connect.js');
+    this.backSlug = "connect: require('./grunt/connect'),";
+    this.concurrentDev = "dev: {\n    tasks: tasks: ['connect', 'watch']\n  },";
   };
 };
 
-if (this.projectType == 'expressType') {
-  PigletGenerator.prototype.complex = function complex() {
+// copy general files
+GruntGenerator.prototype.generalFiles = function generalFiles() {
+  this.copy('grunt/clean.js', 'grunt/clean.js');
+  this.copy('grunt/concat.js', 'grunt/concat.js');
+  this.copy('grunt/copy.js', 'grunt/copy.js');
+  this.copy('grunt/jsbeautifier.js', 'grunt/jsbeautifier.js');
+  this.copy('grunt/jshint.js', 'grunt/jshint.js');
+  this.copy('grunt/jsonlint.js', 'grunt/jsonlint.js');
+  this.copy('grunt/karma.js', 'grunt/karma.js');
+  this.copy('grunt/merge-conflict.js', 'grunt/merge-conflict.js');
+  this.copy('grunt/mocha-test.js', 'grunt/mocha-test.js');
+  this.copy('grunt/protractor.js', 'grunt/protractor.js');
+  this.copy('grunt/release.js', 'grunt/release.js');
+  this.copy('grunt/uglify.js', 'grunt/uglify.js');
+  this.copy('grunt/watch.js', 'grunt/watch.js');
 
-    this.copy('grunt/autoprefixer.js', 'grunt/autoprefixer.js');
-    this.copy('grunt/clean.js', 'grunt/clean.js');
-    this.copy('grunt/concat.js', 'grunt/concat.js');
-    this.copy('grunt/concurrent.js', 'grunt/concurrent.js');
-    this.copy('grunt/connect.js', 'grunt/connect.js');
-    this.copy('grunt/copy.js', 'grunt/copy.js');
-    this.copy('grunt/csslint.js', 'grunt/csslint.js');
-    this.copy('grunt/csso.js', 'grunt/csso.js');
-    this.copy('grunt/jade.js', 'grunt/jade.js');
-    this.copy('grunt/jsbeautifier.js', 'grunt/jsbeautifier.js');
-    this.copy('grunt/jshint.js', 'grunt/jshint.js');
-    this.copy('grunt/jsonlint.js', 'grunt/jsonlint.js');
-    this.copy('grunt/karma.js', 'grunt/karma.js');
-    this.copy('grunt/merge-conflict.js', 'grunt/merge-conflict.js');
-    this.copy('grunt/mocha-test.js', 'grunt/mocha-test.js');
-    this.copy('grunt/node-inspector.js', 'grunt/node-inspector.js');
-    this.copy('grunt/nodemon.js', 'grunt/nodemon.js');
-    this.copy('grunt/protractor.js', 'grunt/protractor.js');
-    this.copy('grunt/release.js', 'grunt/release.js');
-    this.copy('grunt/styl.js', 'grunt/styl.js');
-    this.copy('grunt/uglify.js', 'grunt/uglify.js');
-    this.copy('grunt/watch.js', 'grunt/watch.js');
-  };
+  // styles
+  this.copy('grunt/autoprefixer.js', 'grunt/autoprefixer.js');
+  this.copy('grunt/csslint.js', 'grunt/csslint.js');
+  this.copy('grunt/csso.js', 'grunt/csso.js');
+
+  // rendered templates
+  this.template('grunt/concurrent.js', 'grunt/concurrent.js');
+};
+
+// copy project files
+GruntGenerator.prototype.projectFiles = function projectFiles() {
+  this.mkdir('app');
+  this.mkdir('tests');
+
+  this.copy('.csslintrc', '.csslintrc');
+  this.copy('.gitignore', '.gitignore');
+  this.copy('.jsbeautifyrc', '.jsbeautifyrc');
+  this.copy('.jshintrc', '.jshintrc');
+
+  // rendered templates
+  this.template('package.json', 'package.json');
+  this.template('Gruntfile.js', 'Gruntfile.js');
 };

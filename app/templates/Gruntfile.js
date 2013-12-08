@@ -3,27 +3,24 @@
 module.exports = function (grunt) {
 
   grunt.initConfig({
+    <%= viewSlug %>
     autoprefixer: require('./grunt/autoprefixer'),
+    csslint: require('./grunt/csslint'),
+    csso: require('./grunt/csso'),
+    <%= styleSlug %>
+    <%= backSlug %>
+    karma: require('./grunt/karma'),
+    mochaTest: require('./grunt/mocha-test'),
+    protractor: require('./grunt/protractor'),
     clean: require('./grunt/clean'),
     concat: require('./grunt/concat'),
     concurrent: require('./grunt/concurrent'),
-    connect: require('./grunt/connect'),
     copy: require('./grunt/copy'),
-    csslint: require('./grunt/csslint'),
-    csso: require('./grunt/csso'),
-    jade: require('./grunt/jade'),
     jsbeautifier: require('./grunt/jsbeautifier'),
     jshint: require('./grunt/jshint'),
     jsonlint: require('./grunt/jsonlint'),
-    karma: require('./grunt/karma'),
-    'merge-conflict': require('./grunt/merge-conflict'),
-    mochaTest: require('./grunt/mocha-test'),
-    'node-inspector': require('./grunt/node-inspector'),
-    nodemon: require('./grunt/nodemon'),
-    protractor: require('./grunt/protractor'),
-    release: require('./grunt/release'),
-    styl: require('./grunt/styl'),
     uglify: require('./grunt/uglify'),
+    release: require('./grunt/release'),
     watch: require('./grunt/watch'),
   });
 
@@ -40,7 +37,7 @@ module.exports = function (grunt) {
 
   // Build views
   grunt.registerTask('styles', [
-    'styl',
+    <%= styleTask %>
     'autoprefixer',
     'csso:optimize',
     'csslint',
@@ -48,7 +45,7 @@ module.exports = function (grunt) {
 
   // Build html
   grunt.registerTask('views', [
-    'jade:compile',
+    <%= viewTask %>
   ]);
 
   // Build js
@@ -74,16 +71,8 @@ module.exports = function (grunt) {
   grunt.registerTask('time', [
     'lint',
     'styles',
-    'views', 
+    'views',
     'js',
-    'test',
-  ]);
-
-  // Commit your changes
-  grunt.registerTask('commit', [
-    'mergeConflict',
-    'lint',
-    'build',
     'test',
   ]);
 

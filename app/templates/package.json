@@ -1,21 +1,21 @@
 {
-  "name": "piglet",
-  "version": "0.1.1",
-  "description": "A tiny grunt configuration",
+  "name": "<%= _.slugify(moduleName) %>",
+  "version": "0.0.0",
+  "description": " ",
   "main": "Gruntfile.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/yoshuawuyts/piglet"
+    "url": " "
   },
   "keywords": [
     "grunt",
     "piglet",
     "config"
   ],
-  "author": "Yoshua Wuyts",
+  "author": "<%= authorName %>",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/yoshuawuyts/piglet/issues"
