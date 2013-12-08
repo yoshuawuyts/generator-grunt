@@ -3,9 +3,31 @@
 Yeoman generator for [grunt](gruntjs.com)
 
 ## Installation
+With [node](nodejs.org) and [yo](http://yeoman.io/index.html) installed:
 ````
 npm install -g generator-grunt
 ````
+````
+mkdir PROJECTNAME && cd PROJECTNAME && yo grunt
+````
+
+## Commands
+
+````styles````:  Compile styl, autoprefix, optimize with CSSo
+
+````views````: Compile jade
+
+````js````: Concat, optimize, minify and mangle
+
+````build````: JSbeautifier, JShint
+
+````time````: Lint, build & test while benchmarking
+
+````deploy````: Add git tags & push upstream
+
+````default````: Build, lint, test, server & watch
+
+While always autoreloading, autocorrecting and watching everything...
 
 ## Directory structure
 Generator-grunt assumes the following directory structure:
@@ -23,16 +45,12 @@ Generator-grunt assumes the following directory structure:
 ├── grunt
 └── tests     
 ````
-You can always change the paths in ````Gruntfile.js```` (implemented soon™).
+You can always change the paths in ````Gruntfile.js````.
 
 ## Roadmap
-- ~~Default build~~
-- Vanilla build
-- ~~Variable support~~
-- HTML engine options
-- CSS engine options
-- H5BP support
-- Backend options
+- ~~variable file paths~~
+- SCSS support
+- EJS support
 
 ## License
 MIT © [Yoshua Wuyts](yoshuawuyts.com)
