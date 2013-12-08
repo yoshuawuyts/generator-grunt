@@ -1,4 +1,4 @@
-# generator-grunt
+# generator-grunt [![NPM version](https://badge.fury.io/js/generator-grunt.png)](http://badge.fury.io/js/generator-grunt)
 
 Yeoman generator for [grunt](gruntjs.com)
 
