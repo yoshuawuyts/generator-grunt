@@ -28,7 +28,7 @@ You can always change the paths in ````Gruntfile.js```` (implemented soon™).
 ## Roadmap
 - ~~Default build~~
 - Vanilla build
-- Variable support
+- ~~Variable support~~
 - HTML engine options
 - CSS engine options
 - H5BP support
