@@ -32,7 +32,7 @@ GruntGenerator.prototype.askFor = function askFor() {
   // modulename prompt
   var prompts = [{
     name: 'moduleName',
-    message: 'What do you want to name this module?'
+    message: 'What do you want to name this project?'
   },
 
   // authorname prompt
