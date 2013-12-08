@@ -1,4 +1,4 @@
-# generator-grunt
+# generator-grunt [![NPM version](https://badge.fury.io/js/generator-grunt.png)](http://badge.fury.io/js/generator-grunt)
 
 Yeoman generator for [grunt](gruntjs.com)
 
@@ -28,7 +28,7 @@ You can always change the paths in ````Gruntfile.js```` (implemented soon™).
 ## Roadmap
 - ~~Default build~~
 - Vanilla build
-- Variable support
+- ~~Variable support~~
 - HTML engine options
 - CSS engine options
 - H5BP support
