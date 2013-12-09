@@ -1,4 +1,4 @@
-# generator-grunt [![NPM version](https://badge.fury.io/js/generator-grunt.png)](http://badge.fury.io/js/generator-grunt)
+# generator-grunt [![Dependency Status](https://gemnasium.com/yoshuawuyts/generator-grunt.png)](https://gemnasium.com/yoshuawuyts/generator-grunt) [![NPM version](https://badge.fury.io/js/generator-grunt.png)](http://badge.fury.io/js/generator-grunt) [![Code Climate](https://codeclimate.com/github/yoshuawuyts/generator-grunt.png)](https://codeclimate.com/github/yoshuawuyts/generator-grunt) [![Coverage Status](https://coveralls.io/repos/yoshuawuyts/generator-grunt/badge.png)](https://coveralls.io/r/yoshuawuyts/generator-grunt)
 
 Yeoman generator for [grunt](gruntjs.com)
 
