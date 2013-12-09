@@ -57,6 +57,6 @@
     "grunt-node-inspector": "~0.1.2",
     "grunt-nodemon": "~0.1.2",
     "grunt-contrib-csslint": "~0.1.2",
-    "grunt-contrib-open": "~0.2.2"
+    "grunt-open": "~0.2.2"
   }
 }
