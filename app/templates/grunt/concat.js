@@ -3,6 +3,8 @@
 module.exports = {
   options: {
     stripBanners: true,
+    separator: '\n\n',
+    nonull: true,
   },
   concat: {
     src: ['<%= vars.tmpPath %>/*.js'],

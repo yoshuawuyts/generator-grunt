@@ -6,15 +6,15 @@ module.exports = function (grunt) {
 
     // configurable paths
     vars: {
-      apiPath: 'api{/, /**/, /**/**}*.js',
+      apiPath: ['api/*.js', 'api/**/*.js', 'api/**/**/*.js'],
       configPath: ['Gruntfile.js', 'grunt/**/*.js', 'config/*.js'],
-      stylesPath: 'assets/{utilities/, micro/, macro/}{*,**/*}.styl',
-      jsAssetsPath: 'assets/js{/, /**/, /**/**/}*.js',
+      stylesPath: ['assets/styles/utilities/*.styl', 'assets/styles/micro/*.styl', 'assets/styles/macro/*.styl'],
+      jsAssetsPath: ['assets/js/*.js', 'assets/js/**/*.js', 'assets/js/**/**/*.js'],
       jsonPath: ['./*.json', '.jshintrc', '.jsbeautifyrc', 'tests/**/*.json'],
-      testsPath: 'tests{/, /**/, /**/**}*.js',
-      viewsPath: 'assets/views{/, /**/, /**/**/}*.jade',
+      testsPath: ['tests/*.js', 'tests/**/*.js', 'tests/**/**/*.js'],
+      viewsPath: ['assets/views/*.jade', 'assets/views/**/*.jade', 'assets/views/**/**/*.jade'],
       tmpPath: '.tmp',
-      buildPath: 'build'
+      buildPath: 'build',
     },
 
     <%= viewSlug %>
@@ -35,7 +35,6 @@ module.exports = function (grunt) {
     jsonlint: require('./grunt/jsonlint'),
     open: require('./grunt/open'),
     uglify: require('./grunt/uglify'),
-    release: require('./grunt/release'),
     watch: require('./grunt/watch'),
   });
 
