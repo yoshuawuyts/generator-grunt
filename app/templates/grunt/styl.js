@@ -4,9 +4,10 @@ module.exports = {
   compile: {
     options: {
       whitespace: true,
-      compress: false
+      compress: false,
+      vendors: []
     },
-    src: '<%= vars.stylesPath %>',
+    src: '<%= vars.tmpPath %>/concat.styl',
     dest: '<%= vars.tmpPath %>/style.css'
   }
 };

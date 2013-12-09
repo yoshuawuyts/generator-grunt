@@ -8,4 +8,11 @@ module.exports = {
     src: ['<%= vars.tmpPath %>/*.js'],
     dest: '<%= vars.tmpPath %>/concat.js',
   },
+
+  styles: {
+    files: [{
+      src: ['<%= vars.stylesPath %>'],
+      dest: '<%= vars.tmpPath %>/concat.styl',
+    }]
+  },
 };

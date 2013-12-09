@@ -125,7 +125,7 @@ GruntGenerator.prototype.styleFiles = function styleFiles() {
   if (this.styleType == 'rework') {
     this.copy('grunt/styl.js', 'grunt/styl.js');
     this.styleSlug = "styl: require('./grunt/styl'),";
-    this.styleTask = "'styl',";
+    this.styleTask = "'concat:styles',\n      'styl',";
   };
   if (this.styleType == 'scss') {
     this.styleSlug = "styl: require('./grunt/sass'),";

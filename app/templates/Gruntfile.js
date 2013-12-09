@@ -8,7 +8,7 @@ module.exports = function (grunt) {
     vars: {
       apiPath: 'api{/, /**/, /**/**}*.js',
       configPath: ['Gruntfile.js', 'grunt/**/*.js', 'config/*.js'],
-      stylesPath: 'assets/styles{/, /**/, /**/**/}*.styl',
+      stylesPath: 'assets/{utilities/, micro/, macro/}{*,**/*}.styl',
       jsAssetsPath: 'assets/js{/, /**/, /**/**/}*.js',
       jsonPath: ['./*.json', '.jshintrc', '.jsbeautifyrc', 'tests/**/*.json'],
       testsPath: 'tests{/, /**/, /**/**}*.js',
