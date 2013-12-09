@@ -13,17 +13,19 @@ mkdir PROJECTNAME && cd PROJECTNAME && yo grunt
 
 ## Commands
 
-````styles````:  Compile styl, autoprefix, optimize with CSSo
+````styles````:  Compile styles (css, rework, scss, less, stylus), autoprefix, optimize with CSSo
 
-````views````: Compile jade
+````views````: Compile views (html, jade, ejs)
 
-````js````: Concat, optimize, minify and mangle
+````js````: Concat, mangle, optimize and minify
 
-````build````: JSbeautifier, JShint
+````build````: Views, styles, js
+
+````test````: Test (mocha, jasmine, karma, supertest)
 
 ````time````: Lint, build & test while benchmarking
 
-````deploy````: Add git tags & push upstream
+````deploy````: Add git tags & push upstream / NPM
 
 ````default````: Build, lint, test, server & watch
 
@@ -34,23 +36,28 @@ Generator-grunt assumes the following directory structure:
 ````
 .
 ├── api
-├── assets                // CDN-ready files
+├── assets                // CDN src files
+│   ├── fonts
 │   ├── images
 │   ├── js
 │   ├── vendor            // bower
 │   ├── styles
 │   └── views
-├── build
+├── build                 // CDN dist files
 ├── config                // server config
 ├── grunt
 └── tests     
 ````
-You can always change the paths in ````Gruntfile.js````.
+You can edit the paths in ````Gruntfile.js````.
 
 ## Roadmap
 - ~~variable file paths~~
+- best practice bower pathing
+- copy images / fonts
 - SCSS support
 - EJS support
+- jasmine support
+- supertest support
 
 ## License
 MIT © [Yoshua Wuyts](yoshuawuyts.com)
