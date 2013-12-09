@@ -5,7 +5,11 @@ var util = require('util');
 var path = require('path');
 var yeoman = require('yeoman-generator');
 
-// initialize generator
+/*
+ *  Init project
+ */
+
+// create GruntGenerator object
 var GruntGenerator = module.exports = function GruntGenerator(args, options, config) {
   yeoman.generators.Base.apply(this, arguments);
 
@@ -21,7 +25,10 @@ var GruntGenerator = module.exports = function GruntGenerator(args, options, con
 // extend base prototype
 util.inherits(GruntGenerator, yeoman.generators.Base);
 
-// initialize prompts
+/*
+ *  User prompt
+ */
+
 GruntGenerator.prototype.askFor = function askFor() {
   var cb = this.async();
 
@@ -99,11 +106,31 @@ GruntGenerator.prototype.askFor = function askFor() {
     this.viewType = props.viewType;
     this.styleType = props.styleType;
     this.backType = props.backType;
+
+    // fire off async code
     cb();
+
   // leak 'this' to global scope
   }.bind(this));
 };
 
+/*
+ *  Create files
+ */
+
+// make directories
+GruntGenerator.prototype.projectDirs = function projectDirs() {
+  this.mkdir('api');
+  this.mkdir('assets/fonts');
+  this.mkdir('assets/images');
+  this.mkdir('assets/js');
+  this.mkdir('assets/vendor');
+  this.mkdir('assets/styles');
+  this.mkdir('assets/views');
+  this.mkdir('config');
+  this.mkdir('grunt');
+  this.mkdir('tests');
+};
 
 // copy views
 GruntGenerator.prototype.viewFiles = function viewFiles() {
@@ -152,7 +179,7 @@ GruntGenerator.prototype.backFiles = function backFiles() {
   };
 };
 
-// copy general files
+// copy general grunt files
 GruntGenerator.prototype.generalFiles = function generalFiles() {
   this.copy('grunt/clean.js', 'grunt/clean.js');
   this.copy('grunt/concat.js', 'grunt/concat.js');
@@ -178,9 +205,6 @@ GruntGenerator.prototype.generalFiles = function generalFiles() {
 
 // copy project files
 GruntGenerator.prototype.projectFiles = function projectFiles() {
-  this.mkdir('app');
-  this.mkdir('tests');
-
   this.copy('.csslintrc', '.csslintrc');
   this.copy('.gitignore', '.gitignore');
   this.copy('.jsbeautifyrc', '.jsbeautifyrc');
