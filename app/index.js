@@ -165,6 +165,7 @@ GruntGenerator.prototype.generalFiles = function generalFiles() {
   this.copy('grunt/protractor.js', 'grunt/protractor.js');
   this.copy('grunt/uglify.js', 'grunt/uglify.js');
   this.copy('grunt/watch.js', 'grunt/watch.js');
+  this.copy('grunt/open.js', 'grunt/open.js');
 
   // styles
   this.copy('grunt/autoprefixer.js', 'grunt/autoprefixer.js');
