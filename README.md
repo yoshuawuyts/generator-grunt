@@ -12,7 +12,7 @@ npm install -g generator-grunt
 mkdir PROJECTNAME && cd PROJECTNAME && yo grunt
 ````
 
-## Commands
+## Grunt commands
 
 ````styles````:  Compile styles (css, rework, scss, less, stylus), autoprefix, optimize with CSSo
 
