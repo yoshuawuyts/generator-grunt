@@ -205,10 +205,10 @@ GruntGenerator.prototype.generalFiles = function generalFiles() {
 
 // copy project files
 GruntGenerator.prototype.projectFiles = function projectFiles() {
-  this.copy('.csslintrc', '.csslintrc');
-  this.copy('.gitignore', '.gitignore');
-  this.copy('.jsbeautifyrc', '.jsbeautifyrc');
-  this.copy('.jshintrc', '.jshintrc');
+  this.copy('csslintrc', '.csslintrc');
+  this.copy('gitignore', '.gitignore');
+  this.copy('jsbeautifyrc', '.jsbeautifyrc');
+  this.copy('jshintrc', '.jshintrc');
 
   // rendered templates
   this.template('package.json', 'package.json');
