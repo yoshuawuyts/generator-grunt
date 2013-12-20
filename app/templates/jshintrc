@@ -7,7 +7,6 @@
   "browser": true,
   "bitwise": true,
   "curly": true,
-  "eqeqeq": true,
   "globalstrict": true,
   "immed": true,
   "indent": 2,

@@ -15,7 +15,9 @@ var GruntGenerator = module.exports = function GruntGenerator(args, options, con
 
   // run npm & bower after prompts are done
   this.on('end', function () {
-    this.installDependencies({ skipInstall: options['skip-install'] });
+    this.installDependencies({
+      skipInstall: options['skip-install']
+    });
   });
 
   // read package.json
@@ -34,70 +36,71 @@ GruntGenerator.prototype.askFor = function askFor() {
 
   // have Yeoman greet the user.
   console.log(this.yeoman);
-  console.log('Let\'s start building your Gruntfile!\n')
+  console.log('Let\'s start building your Gruntfile!\n');
 
   // modulename prompt
   var prompts = [{
-    name: 'moduleName',
-    message: 'What do you want to name this project?'
-  },
+      name: 'moduleName',
+      message: 'What do you want to name this project?'
+    },
 
-  // authorname prompt
-  {
-    name: 'authorName',
-    message: 'What is your name?'
-  },
+    // authorname prompt
+    {
+      name: 'authorName',
+      message: 'What is your name?'
+    },
 
-  // views prompt
-  {
-    type: 'list',
-    name: 'viewType',
-    message: 'Choose your HTML engine:',
-    choices: [{
-      value: 'html',
-      name: 'HTML (Available soon)',
-      default: true,
-    }, {
-      value: 'jade',
-      name: 'Jade',
-    }]
-  },
+    // views prompt
+    {
+      type: 'list',
+      name: 'viewType',
+      message: 'Choose your HTML engine:',
+      choices: [{
+        value: 'html',
+        name: 'HTML (Available soon)',
+        default: true,
+      }, {
+        value: 'jade',
+        name: 'Jade',
+      }]
+    },
 
-  // styles prompt
-  {
-    type: 'list',
-    name: 'styleType',
-    message: 'Choose your CSS preprocessor:',
-    choices: [{
-      value: 'css',
-      name: 'CSS (Available soon)',
-      default: true,
-    }, {
-      value: 'rework',
-      name: 'Rework',
-    }, {
-      value: 'scss',
-      name: 'SCSS (Available soon)'
-    }, {
-      value: 'stylus',
-      name: 'Stylus (Available soon)'
-    }]
-  },
+    // styles prompt
+    {
+      type: 'list',
+      name: 'styleType',
+      message: 'Choose your CSS preprocessor:',
+      choices: [{
+        value: 'css',
+        name: 'CSS (Available soon)',
+        default: true,
+      }, {
+        value: 'rework',
+        name: 'Rework',
+      }, {
+        value: 'scss',
+        name: 'SCSS (Available soon)'
+      }, {
+        value: 'stylus',
+        name: 'Stylus (Available soon)'
+      }]
+    },
 
-  // backend prompt
-  {
-    type: 'list',
-    name: 'backType',
-    message: 'Choose your backend:',
-    choices: [{
-      value: 'node',
-      name: 'Node.js',
-      default: true,
-    }, {
-      value: 'static',
-      name: 'A static file server with autoreload',
-    }]
-  }];
+    // backend prompt
+    {
+      type: 'list',
+      name: 'backType',
+      message: 'Choose your backend:',
+      choices: [{
+        value: 'node',
+        name: 'Node.js',
+        default: true,
+      }, {
+        value: 'static',
+        name: 'A static file server with autoreload',
+      }]
+    }
+  ];
 
   // bind responses to object
   this.prompt(prompts, function (props) {
@@ -110,7 +113,7 @@ GruntGenerator.prototype.askFor = function askFor() {
     // fire off async code
     cb();
 
-  // leak 'this' to global scope
+    // leak 'this' to global scope
   }.bind(this));
 };
 
@@ -136,32 +139,32 @@ GruntGenerator.prototype.projectDirs = function projectDirs() {
 GruntGenerator.prototype.viewFiles = function viewFiles() {
   if (this.viewType == 'html') {
     this.viewTask = "'copy:views',";
-  };
+  }
   if (this.viewType == 'jade') {
     this.copy('grunt/jade.js', 'grunt/jade.js');
     this.viewSlug = "jade: require('./grunt/jade'),";
     this.viewTask = "'jade',";
-  };
+  }
 };
 
 // copy styles
 GruntGenerator.prototype.styleFiles = function styleFiles() {
   if (this.styleType == 'css') {
     this.styleTask = "'copy:css',";
-  };
+  }
   if (this.styleType == 'rework') {
     this.copy('grunt/styl.js', 'grunt/styl.js');
     this.styleSlug = "styl: require('./grunt/styl'),";
     this.styleTask = "'concat:styles',\n      'styl',";
-  };
+  }
   if (this.styleType == 'scss') {
     this.styleSlug = "styl: require('./grunt/sass'),";
     this.styleTask = "'sass',";
-  };
+  }
   if (this.styleType == 'stylus') {
     this.styleSlug = "styl: require('./grunt/stylus'),";
     this.styleTask = "'stylus',";
-  };
+  }
 };
 
 // copy backend
@@ -171,12 +174,12 @@ GruntGenerator.prototype.backFiles = function backFiles() {
     this.copy('grunt/nodemon.js', 'grunt/nodemon.js');
     this.backSlug = "'node-inspector': require('./grunt/node-inspector'),\n    nodemon: require('./grunt/nodemon'),";
     this.concurrentDev = "dev: {\n    tasks: ['watch', 'open', 'nodemon', 'node-inspector']\n  },";
-  };
-  if (this.backType == 'static'){
+  }
+  if (this.backType == 'static') {
     this.copy('grunt/connect.js', 'grunt/connect.js');
     this.backSlug = "connect: require('./grunt/connect'),";
     this.concurrentDev = "dev: {\n    tasks: tasks: ['connect', 'watch']\n  },";
-  };
+  }
 };
 
 // copy general grunt files
