@@ -1,8 +1,11 @@
 'use strict';
 
-var gruntfile = require('../Gruntfile');
-
 module.exports = {
+  options: {
+    livereload: {
+      port: 35729,
+    }
+  },
 
   'css': {
     files: ['<%= vars.stylesPath %>'],
