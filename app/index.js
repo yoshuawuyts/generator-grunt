@@ -178,7 +178,7 @@ GruntGenerator.prototype.backFiles = function backFiles() {
   if (this.backType == 'static') {
     this.copy('grunt/connect.js', 'grunt/connect.js');
     this.backSlug = "connect: require('./grunt/connect'),";
-    this.concurrentDev = "dev: {\n    tasks: tasks: ['connect', 'watch']\n  },";
+    this.concurrentDev = "dev: {\n    tasks: ['connect', 'watch']\n  },";
   }
 };
 
