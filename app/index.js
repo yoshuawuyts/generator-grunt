@@ -212,6 +212,8 @@ GruntGenerator.prototype.projectFiles = function projectFiles() {
   this.copy('gitignore', '.gitignore');
   this.copy('jsbeautifyrc', '.jsbeautifyrc');
   this.copy('jshintrc', '.jshintrc');
+  this.copy('bower.json', 'bower.json');
+  this.copy('bowerrc', '.bowerrc');
 
   // rendered templates
   this.template('package.json', 'package.json');
