@@ -17,12 +17,12 @@ module.exports = function (grunt) {
       buildPath: 'build',
     },
 
-    <%= viewSlug %>
+    jade: require('./grunt/jade'),
     autoprefixer: require('./grunt/autoprefixer'),
     csslint: require('./grunt/csslint'),
     csso: require('./grunt/csso'),
-    <%= styleSlug %>
-    <%= backSlug %>
+    styl: require('./grunt/styl'),
+    connect: require('./grunt/connect'),
     karma: require('./grunt/karma'),
     mochaTest: require('./grunt/mocha-test'),
     protractor: require('./grunt/protractor'),
@@ -51,7 +51,8 @@ module.exports = function (grunt) {
 
   // Build views
   grunt.registerTask('styles', [
-    <%= styleTask %>
+    'concat:styles',
+    'styl',
     'autoprefixer',
     'csso:optimize',
     'csslint',
@@ -59,12 +60,12 @@ module.exports = function (grunt) {
 
   // Build html
   grunt.registerTask('views', [
-    <%= viewTask %>
+    'jade',
   ]);
 
   // Build js
   grunt.registerTask('js', [
-    'concat',
+    'concat:js',
     'uglify:compile',
   ]);
 
@@ -90,11 +91,15 @@ module.exports = function (grunt) {
     'test',
   ]);
 
+  grunt.registerTask('server', [
+    'concurrent:dev',
+  ]);
+
   // Build, lint, test and server
   grunt.registerTask('default', [
     'lint',
     'build',
     'test',
-    'concurrent:dev',
+    'server',
   ]);
 };

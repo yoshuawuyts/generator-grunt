@@ -7,32 +7,32 @@ module.exports = {
     }
   },
 
-  'css': {
+  css: {
     files: ['<%= vars.stylesPath %>'],
     tasks: ['css', 'clean:after'],
   },
 
-  'jade': {
+  jade: {
     files: ['<%= vars.viewsPath %>'],
     tasks: ['jade:compile', 'clean:after'],
   },
 
-  'api': {
+  api: {
     files: ['<%= vars.apiPath %>'],
     tasks: ['jsbeautifier:api', 'jshint:api', 'mochaTest:dot'],
   },
 
-  'assets': {
+  jsAssets: {
     files: ['<%= vars.jsAssetsPath %>'],
-    tasks: ['jsbeautifier:assets', 'jshint:assets'],
+    tasks: ['jsbeautifier:assets', 'jshint:assets', 'uglify:compile'],
   },
 
-  'config': {
+  config: {
     files: ['<%= vars.configPath %>'],
     tasks: ['jsbeautifier:config', 'jshint:config'],
   },
 
-  'tests': {
+  tests: {
     files: ['<%= vars.testsPath %>'],
     tasks: ['jsbeautifier:tests', 'jshint:tests'],
   },
@@ -42,7 +42,7 @@ module.exports = {
     tasks: ['jsonlint:all'],
   },
 
-  mochaTest: {
+  'mochaTest': {
     files: ['<%= vars.apiPath %>'],
     tasks: ['mochaTest:dot']
   }

@@ -6,8 +6,8 @@ module.exports = {
     separator: '\n\n',
     nonull: true,
   },
-  concat: {
-    src: ['<%= vars.tmpPath %>/*.js'],
+  js: {
+    src: ['<%= vars.jsAssetsPath %>'],
     dest: '<%= vars.tmpPath %>/concat.js',
   },
 
