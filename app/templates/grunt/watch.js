@@ -9,7 +9,7 @@ module.exports = {
 
   css: {
     files: ['<%= vars.stylesPath %>'],
-    tasks: ['css', 'clean:after'],
+    tasks: ['styles', 'clean:after'],
   },
 
   jade: {

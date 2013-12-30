@@ -5,6 +5,6 @@ module.exports = {
   },
 
   lint: {
-    src: ['<%= vars.buildPath %>/styles.css']
+    src: ['<%= vars.buildPath %>/style.min.css']
   },
 };
