@@ -24,7 +24,7 @@ module.exports = {
 
   jsAssets: {
     files: ['<%= vars.jsAssetsPath %>'],
-    tasks: ['jsbeautifier:assets', 'jshint:assets', 'uglify:compile'],
+    tasks: ['jsbeautifier:assets', 'jshint:assets', 'concat:js', 'uglify:compile', 'clean:after'],
   },
 
   config: {
