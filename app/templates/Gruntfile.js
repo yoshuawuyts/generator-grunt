@@ -10,6 +10,7 @@ module.exports = function (grunt) {
       configPath: ['Gruntfile.js', 'grunt/**/*.js', 'config/*.js'],
       stylesPath: ['assets/styles/utilities/*.styl', 'assets/styles/micro/*.styl', 'assets/styles/macro/*.styl', 'assets/styles/*.styl'],
       jsAssetsPath: ['assets/js/*.js', 'assets/js/**/*.js', 'assets/js/**/**/*.js'],
+      jsBowerPath: ['assets/vendor/**/*min.js', '!assets/vendor/**/angular.min.js'],
       jsonPath: ['./*.json', '.jshintrc', '.jsbeautifyrc', 'tests/**/*.json'],
       testsPath: ['tests/*.js', 'tests/**/*.js', 'tests/**/**/*.js'],
       viewsPath: ['assets/views/*.jade', 'assets/views/**/*.jade', 'assets/views/**/**/*.jade'],
@@ -65,6 +66,7 @@ module.exports = function (grunt) {
 
   // Build js
   grunt.registerTask('js', [
+    'copy:js',
     'concat:js',
     'uglify:compile',
   ]);
@@ -91,6 +93,7 @@ module.exports = function (grunt) {
     'test',
   ]);
 
+  // Start server
   grunt.registerTask('server', [
     'concurrent:dev',
   ]);

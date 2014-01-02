@@ -15,11 +15,8 @@ npm-debug.log
 node_modules
 
 # folders
-build
-.tmp
-api
-assets
-config
+build/
+.tmp/
 
 # files
 grunt/.nodemonignore
