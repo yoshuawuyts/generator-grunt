@@ -3,6 +3,8 @@
 
 > [Yeoman](yeoman.io) generator for [grunt](gruntjs.com)
 
+# This package is no longer maintained. Do not use.
+
 ## Installation
 ````
 npm i -g generator-grunt
