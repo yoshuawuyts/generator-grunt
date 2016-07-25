@@ -21,7 +21,9 @@
     "url": "git://github.com/yoshuawuyts/generator-grunt.git"
   },
   "scripts": {
-    "test": "mocha"
+    "test": "mocha",
+    "snyk-protect": "snyk protect",
+    "prepublish": "npm run snyk-protect"
   },
   "dependencies": {
     "yeoman-generator": "~0.14.0",
@@ -61,7 +63,8 @@
     "grunt-node-inspector": "~0.1.2",
     "grunt-nodemon": "~0.1.2",
     "grunt-contrib-csslint": "~0.1.2",
-    "grunt-open": "~0.2.2"
+    "grunt-open": "~0.2.2",
+    "snyk": "^1.17.1"
   },
   "devDependencies": {
     "mocha": "~1.14.0",
@@ -84,5 +87,6 @@
     {
       "type": "MIT"
     }
-  ]
+  ],
+  "snyk": true
 }
