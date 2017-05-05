@@ -51,7 +51,7 @@
     "karma-chrome-launcher": "~0.1.0",
     "karma-html2js-preprocessor": "~0.1.0",
     "karma-mocha": "~0.1.0",
-    "karma-phantomjs-launcher": "~0.1.0",
+    "karma-phantomjs-launcher": "~0.2.0",
     "karma-script-launcher": "~0.1.0",
     "load-grunt-tasks": "~0.2.0",
     "mocha": "~1.14.0",
