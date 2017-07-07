@@ -24,7 +24,7 @@
     "test": "mocha"
   },
   "dependencies": {
-    "yeoman-generator": "~0.14.0",
+    "yeoman-generator": "~0.17.0",
     "chai": "~1.8.1",
     "grunt": "~0.4.1",
     "grunt-autoprefixer": "~0.4.1",
